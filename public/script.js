@@ -23,7 +23,7 @@ const addReceivedMessage = (message) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (msgInput.value) {
+  if (msgInput.value && msgInput.value.replace(/\s/g, "").length) {
     socket.emit("chat message", msgInput.value);
     addSelfMessage(msgInput.value);
     msgInput.value = "";
