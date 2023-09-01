@@ -6,6 +6,20 @@ const form = document.getElementById("form");
 const msgInput = document.getElementById("msgInput");
 const messages = document.getElementById("messages");
 
+const addUser = (id) => {
+  const userAddedEl = document.createElement("div");
+  userAddedEl.textContent = `${id} joined the chat`;
+  userAddedEl.className = "user-connect";
+  messages.appendChild(userAddedEl);
+};
+
+const removeUser = (id) => {
+  const userRemoveedEl = document.createElement("div");
+  userRemoveedEl.textContent = `${id} left the chat`;
+  userRemoveedEl.className = "user-disconnect";
+  messages.appendChild(userRemoveedEl);
+};
+
 const addSelfMessage = (message) => {
   const msgElement = document.createElement("div");
   msgElement.textContent = message;
@@ -32,4 +46,12 @@ form.addEventListener("submit", (e) => {
 
 socket.on("chat message", (msg) => {
   addReceivedMessage(msg);
+});
+
+socket.on("user-connected", (id) => {
+  addUser(id);
+});
+
+socket.on("user-disconnected", (id) => {
+  removeUser(id);
 });

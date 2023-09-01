@@ -78,3 +78,18 @@ form button {
 .message.received {
   border-radius: 10px 10px 10px 0;
 }
+
+.user-connect,
+.user-disconnect {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 5px;
+}
+.user-connect {
+  background: rgb(157, 236, 236);
+}
+.user-disconnect {
+  background: rgb(235, 234, 183);
+}
